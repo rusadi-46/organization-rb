@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title">User</h5>
+		<div class="row">
+			<div class="col-md-6 py-4">
+				<form accept-charset="UTF-8" action="/users" method="get">
+				  <input id="q" name="search" type="text" />
+				  <input name="commit" type="submit" value="Search" />
+				</form>
+			</div>
+			<div class="col-md-6 py-4" style="text-align: right">
+				<%= link_to 'New User', new_user_path, method: :get, :class => "button btn btn-secondary" %>
+			</div>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Name</th>
+					<th scope="col">Email</th>
+					<th scope="col">Status</th>
+					<th scope="col" class="text-center" width="15%" >Action</th>
+				</tr>
+		  	</thead>
+		  	<tbody>
+		  		<% @users.each_with_index do |data, index| %>   
+					<tr>
+					  	<th scope="row"><%= index + 1 %></th>
+					  	<td><%= data.name %></td>
+					  	<td><%= data.email %></td>
+					  	<td><%= data.status %></td>
+					  	<td>
+					  		<%= link_to "Edit", edit_user_path(data), :class => "button btn btn-primary" %>
+					  		<%= link_to 'Delete', data, :class => "button btn btn-danger", method: :delete, data: {confirm: 'Are you sure?' }%>
+			  			</td>
+					</tr>
+				<% end %>   
+		  </tbody>
+		</table>
+	</div>
+</div>
+

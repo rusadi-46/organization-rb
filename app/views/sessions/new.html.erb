@@ -1,0 +1,33 @@
+<form class="form-signin" accept-charset="UTF-8" action="/signup" method="post">
+	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  	<div class="text-center mb-4">
+    	<img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    	<h1 class="h3 mb-3 font-weight-normal">PRINTEROUS</h1>
+  	</div>
+
+  	<h3>Sign Up</h3>
+
+  	<div class="form-label-group">
+	    <input type="text" id="inputName" class="form-control" placeholder="Name" required autofocus name="user[name]">
+	    <label for="inputName">Name</label>
+	</div>
+
+ 	<div class="form-label-group">
+	    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus name="user[email]">
+	    <label for="inputEmail">Email address</label>
+	</div>
+
+  	<div class="form-label-group">
+    	<input type="password" id="password" class="form-control" placeholder="Password" name="user[password_digest]" required>
+    	<label for="password">Password</label>
+  	</div>
+  	<div class="form-label-group">
+    	<input type="password" id="passwordConfirmation" class="form-control" placeholder="Password confirmation" name="user[password_confirmation]" required>
+    	<label for="passwordConfirmation">Password Confirmation</label>
+  	</div>
+	<input type="hidden" name="user[status]" value="admin">
+  	<div class="d-grid gap-2">
+	  	<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+  	</div>
+  	<p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
+</form>

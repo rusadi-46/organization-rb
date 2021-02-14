@@ -1,0 +1,47 @@
+<div class="card">
+  	<div class="card-body">
+    	<h5 class="card-title">Edit Organization</h5>
+	    <form class="row g-3" accept-charset="UTF-8" action="<%= organization_path(@organization.id) %>" method="POST" enctype="multipart/form-data">
+	    	<input name="_method" type="hidden" value="put" />
+	    	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+	    	<div class="col-md-6">
+	    	<label class="form-label">Account Manager</label>
+		    	<select class="form-select" aria-label="Default select example" name="organization[user_id]">
+	    	        <option>Select account manager</option>
+	    	        <% @user.each do |data| %>
+	    	        	<option value="<%= data.id %>" 
+	    	        		<% if data.id == @organization.user_id %>
+	    	        		  selected
+	    	        		<% end %>
+	    	        	>
+	    	        		<%= data.name %>
+    	        		</option>
+	    	        <% end %>
+	    	    </select>
+	    	</div>
+	      	<div class="col-md-6">
+	        	<label class="form-label">Name</label>
+	        	<input type="text" class="form-control" name="organization[name]" value="<%= @organization.name %>">
+	      	</div>
+	      	<div class="col-md-6">
+	        	<label class="form-label">Phone</label>
+	        	<input type="test" class="form-control" name="organization[phone]" value="<%= @organization.phone %>">
+	      	</div>
+	      	<div class="col-md-6">
+	        	<label class="form-label">Email</label>
+	        	<input type="email" class="form-control" name="organization[email]" value="<%= @organization.email %>">
+	      	</div>
+	      	<div class="col-md-6">
+	        	<label class="form-label">Website</label>
+	        	<input type="text" class="form-control" name="organization[website]" value="<%= @organization.website %>">
+	      	</div>
+	      	<div class="col-md-6">
+	        	<label for="formFile" class="form-label">Logo</label>
+	        	<input class="form-control" type="file" name="organization[logo]">
+	      	</div>
+	      	<div class="col-md-6">
+	        	<button type="submit" class="btn btn-primary">Submit</button>
+	      	</div>
+	    </form>
+  	</div>
+</div>

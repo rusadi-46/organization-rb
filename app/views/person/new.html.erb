@@ -1,0 +1,36 @@
+<div class="card">
+  	<div class="card-body">
+    	<h5 class="card-title">Add Person</h5>
+	    <form class="row g-3" accept-charset="UTF-8" action="/person" method="post" enctype="multipart/form-data">
+	    	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+	    	<div class="col-md-6">
+		    	<label class="form-label">Organization</label>
+		    	<select class="form-select" aria-label="Default select example" name="person[organization_id]">
+	    	        <option>Select organization</option>
+	    	        <% @organization.each do |data| %>
+	    	        	<option value="<%= data.id %>"><%= data.name %></option>
+	    	        <% end %>
+	    	    </select>
+	    	</div>
+	      	<div class="col-md-6">
+	        	<label class="form-label">Name</label>
+	        	<input type="text" class="form-control" name="person[name]">
+	      	</div>
+	      	<div class="col-md-6">
+	        	<label class="form-label">Phone</label>
+	        	<input type="test" class="form-control" name="person[phone]">
+	      	</div>
+	      	<div class="col-md-6">
+	        	<label class="form-label">Email</label>
+	        	<input type="email" class="form-control" name="person[email]">
+	      	</div>
+	      	<div class="col-md-6">
+	        	<label for="formFile" class="form-label">Avatar</label>
+	        	<input class="form-control" type="file" name="person[avatar]">
+	      	</div>
+	      	<div class="col-md-12">
+	        	<button type="submit" class="btn btn-primary">Submit</button>
+	      	</div>
+	    </form>
+  	</div>
+</div>
