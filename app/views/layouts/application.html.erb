@@ -97,15 +97,20 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <% if current_user %> 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <% if current_user.status === 'Admin' %>
               <li class="nav-item">
                 <a class="nav-link <%= current_class?('/users') %>" aria-current="page" href="/users">User</a>
               </li>
+              <% end %>
               <li class="nav-item">
                 <a class="nav-link <%= current_class?('/organization') %>" href="/organization">Organization</a>
               </li>
+
+              <% if current_user.status === 'Admin' || current_user.organization.nil?%>
               <li class="nav-item">
                 <a class="nav-link <%= current_class?('/person') %>" href="/person">Person</a>
               </li>
+              <% end %>
             </ul>
           <% end %>
           </div>

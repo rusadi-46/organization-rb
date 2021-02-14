@@ -8,9 +8,11 @@
 				  <input name="commit" type="submit" value="Search" />
 				</form>
 			</div>
+			<% if current_user.status === 'Admin' || current_user.organization.nil?%>
 			<div class="col-md-6 py-4" style="text-align: right">
 				<%= link_to 'Add New',url_for(action: :new), method: :get, :class => "button btn btn-secondary" %>
 			</div>
+			<% end %>   
 		</div>
 
 		<table class="table">
@@ -22,7 +24,10 @@
 					<th scope="col">Email</th>
 					<th scope="col">Phone</th>
 					<th scope="col">Website</th>
+					<% if current_user.status === 'Admin' || current_user.organization.nil?%>
 					<th scope="col" class="text-center" width="25%" >Action</th>
+					<% end %>   
+
 				</tr>
 		  	</thead>
 		  	<tbody>
@@ -34,11 +39,13 @@
 					  	<td><%= data.email %></td>
 					  	<td><%= data.phone %></td>
 					  	<td><%= data.website %></td>
+					  	<% if current_user.status === 'Admin' || current_user.organization.nil?%>
 					  	<td>
 					  		<%= link_to "Show", organization_path(data), :class => "button btn btn-warning" %>
 					  		<%= link_to "Edit", edit_organization_path(data), :class => "button btn btn-primary" %>
 					  		<%= link_to 'Delete', organization_path(data), :class => "button btn btn-danger", method: :delete, data: {confirm: 'Are you sure?' }%>
 			  			</td>
+						<% end %>   
 					</tr>
 				<% end %>   
 		  </tbody>
