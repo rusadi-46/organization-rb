@@ -8,7 +8,7 @@
 				  <input name="commit" type="submit" value="Search" />
 				</form>
 			</div>
-			<% if current_user.status === 'Admin' || current_user.organization.nil?%>
+			<% if current_user.status === 'Admin' || !current_user.organization.blank?%>
 			<div class="col-md-6 py-4" style="text-align: right">
 				<%= link_to 'Add New',url_for(action: :new), method: :get, :class => "button btn btn-secondary" %>
 			</div>
@@ -24,7 +24,7 @@
 					<th scope="col">Email</th>
 					<th scope="col">Phone</th>
 					<th scope="col">Website</th>
-					<% if current_user.status === 'Admin' || current_user.organization.nil?%>
+					<% if current_user.status === 'Admin' || !current_user.organization.blank?%>
 					<th scope="col" class="text-center" width="25%" >Action</th>
 					<% end %>   
 
@@ -39,7 +39,7 @@
 					  	<td><%= data.email %></td>
 					  	<td><%= data.phone %></td>
 					  	<td><%= data.website %></td>
-					  	<% if current_user.status === 'Admin' || current_user.organization.nil?%>
+					  	<% if current_user.status === 'Admin' || !current_user.organization.blank?%>
 					  	<td>
 					  		<%= link_to "Show", organization_path(data), :class => "button btn btn-warning" %>
 					  		<%= link_to "Edit", edit_organization_path(data), :class => "button btn btn-primary" %>
